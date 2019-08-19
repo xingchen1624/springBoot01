@@ -8,6 +8,13 @@
     <artifactId>springBoot01</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <!--
+        spring boot依赖的父项目
+        点进去看到该父项目又依赖父项目 spring-boot-dependencies
+        再点进去，看到dependencies中定义了几乎主流的所有技术的版本
+        所以我们加入依赖的时候，一般不需要写版本号，除非spring-boot-dependencies
+        中没有，或者需要使用别的版本，不使用自带的版本
+    -->
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
