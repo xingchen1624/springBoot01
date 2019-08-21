@@ -2,16 +2,17 @@
 #注意如果属性是 lastName  yml中提示你的属性是last-name,这两者在yml中是等价的，都可以用
 server:
   port: 8082
+spring:
+  profiles: dev
 
-person:
-  name: 张三
-  age: 18
-  boss: false
-  birthday: 2010/04/12
-  maps: {k1: v1,k2: v2}
-  lists:
-    - lisi
-    - zhaoliu
-  dog:
-    name: uzi
-    age: 18
+---
+server:
+  port: 8083
+spring:
+  profiles: sat
+
+---
+server:
+  port: 8084
+spring:
+  profiles: prod
