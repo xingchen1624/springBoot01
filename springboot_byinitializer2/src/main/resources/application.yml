@@ -1,9 +1,20 @@
 #yml文件中冒号后面和值中间有个空格，这个空格不能省略
 #注意如果属性是 lastName  yml中提示你的属性是last-name,这两者在yml中是等价的，都可以用
+
+spring:
+  profiles:
+    active: dev
+---
 server:
   port: 8082
 spring:
   profiles: dev
+
+#启动spring boot的debug模式，控制台会自动打印CONDITIONS EVALUATION REPORT，
+#这样就可以知道自动配置类生效，哪些没有生效了
+#Positive matches:（启动的，匹配成功的）
+#Negative matches:（没有启动的，没有匹配成功的）
+debug: true
 
 ---
 server:
