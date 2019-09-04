@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!-- saved from url=(0051)https://getbootstrap.com/docs/4.1/examples/sign-in/ -->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <link rel="icon" href="https://getbootstrap.com/favicon.ico" />
+
+    <title>登录页面</title>
+
+    <!-- Bootstrap core CSS -->
+    <!--
+        普通情况下我们使用href中定义的路径访问静态资源。如果我们使用thymeleaf语法引用webjar中的静态资源
+        可使用th:href中的写法。知识点回顾：所有的/webjars/**请求，都去classpath:/META-INF/resources/webjars/找资源
+    -->
+    <link href="css/bootstrap.min.css" th:href="@{/webjars/bootstrap/4.1.1/css/bootstrap.css}" rel="stylesheet" />
+
+    <!-- 自定义的静态资源访问方式 -->
+    <link href="css/signin.css" th:href="@{/css/signin.css}" rel="stylesheet" />
+  </head>
+    <!--<body class="text-center" > 不写th:inline也可以-->
+  <body class="text-center" th:inline="text">
+    <form class="form-signin" action="dashboard.html" th:action="@{/user/login}" method="post">
+      <img class="mb-4" src="img/bootstrap-solid.svg" th:src="@{/img/bootstrap-solid.svg}" alt="" width="72" height="72" />
+      <h1 class="h3 mb-3 font-weight-normal" >[[#{login.tip}]]</h1>
+        <!--判断msg不为空才显示，这里利用了th:if的优先级高于th:text。所以会先判断th:if的条件-->
+        <p style="color: red" th:text="${msg}" th:if="${not #strings.isEmpty(msg)}"></p>
+      <label  class="sr-only" th:text="#{login.username}">Username</label>
+      <input type="text"  name="username" class="form-control" placeholder="Username" th:placeholder="#{login.username}" required="" autofocus=""/>
+      <label for="inputPassword" class="sr-only" th:text="#{login.password}">Password</label>
+      <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" th:placeholder="#{login.password}" required="" />
+      <div class="checkbox mb-3">
+        <label >
+          <input type="checkbox" value="remember-me" /> [[#{login.remember}]]
+        </label>
+      </div>
+      <button class="btn btn-lg btn-primary btn-block" type="submit" th:text="#{login.btn}">Sign in</button>
+      <p class="mt-5 mb-3 text-muted">© 2017-2018</p>
+        <!-- 普通传参写法-->
+        <!--<a href="#" class="btn btn-sm" th:href="@{/login.html?lg=zh_CN}">中文</a>-->
+        <!--<a href="#" class="btn btn-sm" th:href="@{/login.html?lg=en_US}">English</a>-->
+
+        <!--使用thymeleaf传参写法 @{/login.html(lg='zh_CN')-->
+        <a href="#" class="btn btn-sm" th:href="@{/login.html(lg='zh_CN')}">中文</a>
+        <a href="#" class="btn btn-sm" th:href="@{/login.html(lg='en_US')}">English</a>
+
+    </form>
+
+
+</body></html>
